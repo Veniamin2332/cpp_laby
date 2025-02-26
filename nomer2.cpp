@@ -6,9 +6,15 @@
 #define MAX 1000000
 
 
-void ftn(int arr[], int gr, int a) {
-    int left = 0;     
-    int right = gr - 1;
+int bubu(unsigned (&cnt)){
+    cnt += cnt >= 1000 ? (cnt >= 10000 ? (cnt >= 100000 ? 100000 : 10000): 1000) : 100;
+    return cnt;
+}
+
+
+void ftn(int arr[], int gr, int a, int &left, int &right) {
+     left = 0;     
+    right = gr - 1;
 
     while (left < right) {
         int sum = arr[left] + arr[right];
@@ -34,10 +40,11 @@ int main(){
             for(unsigned i = 0; i < cnt; ++i) x[i] = dstr(rng);
 
             auto begin = std::chrono::steady_clock::now();
-            for(unsigned j = 10000; j != 0; --j)
+            for(unsigned j = 10000; j != 0; --j){
 
-            ftn(x, cnt, dstr(rng)); //                        тут исследуемая функция
-
+            int left, right;
+            ftn(x, cnt, dstr(rng), left, right); //                        тут исследуемая функция
+            }
             auto end = std::chrono::steady_clock::now();
             auto time_span = std::chrono::duration_cast <std::chrono::milliseconds> (end - begin);
             std::cout << time_span.count() << ", ";
@@ -46,7 +53,7 @@ int main(){
     }
     
     std::cout << std::endl << std::endl;
-    for(unsigned cnt = 100; cnt <= N; cnt +=  cnt >= 1000 ? (cnt >= 10000 ? (cnt >= 100000 ? 100000 : 10000): 1000) : 100) std::cout << cnt << ", ";
+    for(unsigned cnt = 100; cnt <= N; bubu(cnt)) std::cout << cnt << ", ";
 
 
 

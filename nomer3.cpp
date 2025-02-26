@@ -5,6 +5,10 @@
 #define N 1000000
 #define MAX 1000000
 
+int bubu(unsigned (&cnt)){
+    cnt += cnt >= 1000 ? (cnt >= 10000 ? (cnt >= 100000 ? 100000 : 10000): 1000) : 100;
+    return cnt;
+}
 
 int find_O_n_A(int gr, int (&arr)[N], int x) {
     int rez = 0;
@@ -77,7 +81,7 @@ int main(){
         
     
     std::cout << std::endl << std::endl;
-    for(unsigned cnt = 100; cnt <= N; cnt +=  cnt >= 1000 ? (cnt >= 10000 ? 10000: 1000) : 100)std::cout << cnt << ", "; 
+    for(unsigned cnt = 100; cnt <= N; bubu(cnt))std::cout << cnt << ", "; 
 
 
 

@@ -6,6 +6,11 @@
 #define MAX 1000000
 
 
+int bubu(unsigned (&cnt)){
+    cnt += cnt >= 1000 ? (cnt >= 10000 ? (cnt >= 100000 ? 100000 : 10000): 1000) : 100;
+    return cnt;
+}
+
 int find_O_n(int gr, int (&arr)[N], int x) {
     int rez = 0;
     for(; rez < gr; ++rez) 
@@ -19,7 +24,7 @@ int find_O_logn(int gr, int (&arr)[N], int x) {
     int r = gr-1; 
     int mid;
     while ((l <= r) && (flag != true) && r <= gr && l >= 0) {
-        mid = (l + r) / 2;  
+        mid = l + (r - l) / 2;  
         if (arr[mid] == x) flag = true;  
         else if (arr[mid] > x) r = mid - 1; 
         else l = mid + 1;
@@ -53,7 +58,7 @@ int main(){
     }
     
     std::cout << std::endl << std::endl;
-    for(unsigned cnt = 100; cnt <= N; cnt +=  cnt >= 1000 ? (cnt >= 10000 ? (cnt >= 100000 ? 100000 : 10000): 1000) : 100) std::cout << cnt << ", ";
+    for(unsigned cnt = 100; cnt <= N; bubu(cnt)) std::cout << cnt << ", ";
 
 
 
