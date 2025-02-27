@@ -1,9 +1,20 @@
 #include <iostream>
 #include <chrono>
 #include <random>
+#include <algorithm>
 
 #define N 1000000
-#define MAX 1000000
+//#define MAX 1000000
+
+// void puzire(int (&a)[N], int unsigned (&cnt)){
+//     for(int i = 0; i < cnt - 1; i++){
+//         for(int j = i + 1; j < cnt; j++){
+//             if(a[i] > a[j]){
+//                 std::swap(a[i], a[j]);
+//             }
+//         }
+// }
+// }
 
 
 int bubu(unsigned (&cnt)){
@@ -40,12 +51,12 @@ int main(){
 
     for(int j = 0; j < 5; ++j){
         std::cout << std::endl <<  "max: " << max_rand[j] << std::endl;
-        for(unsigned cnt = 100; cnt <= N; cnt +=  cnt >= 1000 ? (cnt >= 10000 ? (cnt >= 100000 ? 100000 : 10000): 1000) : 100){    //изменяем шаг, чтобы не считать слишком долго  
+        for(unsigned cnt = 100; cnt <= N; bubu(cnt)){                   //изменяем шаг, чтобы не считать слишком долго  
             std::uniform_int_distribution <unsigned> dstr(0, max_rand[j]);
             for(unsigned i = 0; i < cnt; ++i) x[i] = dstr(rng);
-
+            //std::sort(x, x + cnt);
             auto begin = std::chrono::steady_clock::now();
-            for(unsigned j = 100000; j != 0; --j)
+            for(unsigned k = 100000; k != 0; --k)
 
             //find_O_logn(cnt, x, dstr(rng)); //                        тут исследуемая функция
             find_O_n(cnt, x, dstr(rng));
@@ -66,3 +77,5 @@ int main(){
 
     return 0;
 }
+
+

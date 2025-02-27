@@ -59,7 +59,7 @@ int main(){
     int x[N];
     
 
-    for(unsigned cnt = 100; cnt <= N; cnt +=  cnt >= 1000 ? (cnt >= 10000 ? 10000: 1000) : 100){        //изменяем шаг, чтобы не считать слишком долго  
+    for(unsigned cnt = 100; cnt <= N; bubu(cnt)){        //изменяем шаг, чтобы не считать слишком долго  
         for(unsigned i = 0; i < cnt; ++i) x[i] = dstr(rng);
         int arr0[N] = {0};
         
@@ -71,7 +71,7 @@ int main(){
 
             find_O_n_A(cnt, x, zn); //                        тут исследуемая функция
             //find_O_n_C(cnt, x, dstr(rng), arr0);
-            //find_O_n_A(cnt, x, dstr(rng));
+            //find_O_n_B(cnt, x, dstr(rng));
         }
 
         auto end = std::chrono::steady_clock::now();
